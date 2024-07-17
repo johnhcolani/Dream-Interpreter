@@ -7,7 +7,7 @@ class BackgroundImage2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Positioned.fill(
       child: Opacity(
-        opacity: 0.6,
+        opacity: 0.8,
         child: SizedBox(
           width: double.infinity,
           height: double.infinity,
