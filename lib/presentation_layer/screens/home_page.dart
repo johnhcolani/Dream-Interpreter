@@ -45,6 +45,11 @@ class _MyHomePageState extends ConsumerState<HomePage> {
         'question': state.questions.last,
         'answer': state.aiAnswers.last,
       });
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Saved your dream"),
+        ),
+      );
     }
   }
 
