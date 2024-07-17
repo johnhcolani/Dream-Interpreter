@@ -14,7 +14,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 4), () {
+    Timer(const Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(
         PageRouteBuilder(
           pageBuilder: (context, animation, secondaryAnimation) => const HomePage(),
@@ -48,7 +48,7 @@ class _SplashScreenState extends State<SplashScreen> {
               child: SizedBox(
                   height:double.infinity,
                   width: double.infinity,
-                  child: Image.asset('images/splash_screen02.png', fit: BoxFit.fill)),
+                  child: Image.asset('images/p1.png', fit: BoxFit.fill)),
             ),
           ),
           Center(
@@ -58,6 +58,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 width: 250.0,
                 child: DefaultTextStyle(
                   style: const TextStyle(
+                    color: Colors.black87,
                     fontSize: 30.0,
                     fontFamily: 'Pacifico',
                   ),

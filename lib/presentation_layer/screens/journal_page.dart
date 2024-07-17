@@ -1,3 +1,4 @@
+import 'package:dream_interpret/presentation_layer/widgets/background_image2.dart';
 import 'package:flutter/material.dart';
 import '../widgets/background_image.dart';
 import '../widgets/clear_appbar.dart';
@@ -13,7 +14,7 @@ class JournalPage extends StatelessWidget {
       backgroundColor: Colors.transparent,
       body: Stack(
         children: [
-          const BackgroundImage(),
+          const BackgroundImage2(),
           Column(
             children: [
               ClearAppBar(
@@ -30,7 +31,7 @@ class JournalPage extends StatelessWidget {
                     itemBuilder: (context, index) {
                       final entry = savedEntries[index];
                       return Card(
-                        color: Colors.grey[800]?.withOpacity(0.7),
+                        color: Colors.grey[400]?.withOpacity(0.7),
                         child: ListTile(
                           title: Text(
                             'Q: ${entry['question']}',
@@ -38,7 +39,7 @@ class JournalPage extends StatelessWidget {
                           ),
                           subtitle: Text(
                             'A: ${entry['answer']}',
-                            style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.cyan.shade200),
+                            style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.black),
                           ),
                         ),
                       );

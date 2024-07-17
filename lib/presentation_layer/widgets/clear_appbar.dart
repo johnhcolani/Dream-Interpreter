@@ -15,7 +15,7 @@ class ClearAppBar extends StatelessWidget implements PreferredSizeWidget {
         filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
         child: Container(
           height: 125,
-          color: Colors.black.withOpacity(0.3), // Adjust the opacity to make it clear
+          color: Colors.black.withOpacity(0.5), // Adjust the opacity to make it clear
           child: AppBar(
             title: Text(
               title,

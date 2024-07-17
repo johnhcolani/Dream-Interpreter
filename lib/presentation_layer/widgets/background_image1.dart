@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class BackgroundImage extends StatelessWidget {
-  const BackgroundImage({super.key});
+class BackgroundImage1 extends StatelessWidget {
+  const BackgroundImage1({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class BackgroundImage extends StatelessWidget {
           width: double.infinity,
           height: double.infinity,
           child: Image.asset(
-            'images/p1.png', // Replace with your image path
+            'images/p2.png', // Replace with your image path
             fit: BoxFit.cover,
           ),
         ),
