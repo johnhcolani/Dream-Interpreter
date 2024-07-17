@@ -94,6 +94,6 @@ class AIResponseNotifier extends StateNotifier<AIResponseState> {
 }
 
 final aiResponseProvider = StateNotifierProvider<AIResponseNotifier, AIResponseState>((ref) {
-  final model = GenerativeModel(model: 'gemini-1.5-flash', apiKey: Constants.apiKey);
+  final model = GenerativeModel(model: 'gemini-1.5-flash', apiKey: Constants.apikey!);
   return AIResponseNotifier(model);
 });
