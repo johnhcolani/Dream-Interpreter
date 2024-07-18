@@ -21,6 +21,10 @@ jobs:
         with:
           flutter-version: '3.22.2'
 
+      - name: Create .env file
+        run: |
+          echo "API_KEY=${{ secrets.API_KEY }}" > .env
+
       - name: Install dependencies
         run: flutter pub get
 
@@ -42,6 +46,10 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.22.2'
+
+      - name: Create .env file
+        run: |
+          echo "API_KEY=${{ secrets.API_KEY }}" > .env
 
       - name: Install dependencies
         run: flutter pub get
