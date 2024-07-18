@@ -1,6 +1,5 @@
 import 'package:dream_interpret/presentation_layer/widgets/background_image2.dart';
 import 'package:flutter/material.dart';
-import '../widgets/background_image.dart';
 import '../widgets/clear_appbar.dart';
 
 class JournalPage extends StatelessWidget {

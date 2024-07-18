@@ -19,10 +19,10 @@ class ClearAppBar extends StatelessWidget implements PreferredSizeWidget {
           child: AppBar(
             title: Text(
               title,
-              style: TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white),
             ),
             leading: IconButton(
-              icon: Icon(Icons.arrow_back, color: Colors.white), // Set the icon color to white
+              icon: const Icon(Icons.arrow_back, color: Colors.white), // Set the icon color to white
               onPressed: onBack,
             ),
             backgroundColor: Colors.transparent,

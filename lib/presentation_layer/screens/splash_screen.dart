@@ -7,10 +7,10 @@ class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  SplashScreenState createState() => SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
@@ -68,7 +68,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       TyperAnimatedText("Let's talk about your dream"),
                     ],
                     onTap: () {
-                      print("Tap Event");
+
                     },
                   ),
                 ),

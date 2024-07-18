@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../ai_response_notifier.dart';
-import '../widgets/background_image.dart';
 import '../widgets/background_image1.dart';
 import '../widgets/custom_appbar.dart';
 import '../widgets/input_row.dart';

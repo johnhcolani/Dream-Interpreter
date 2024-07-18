@@ -7,10 +7,10 @@ class QuestionsList extends StatelessWidget {
   final ScrollController scrollController;
 
   const QuestionsList({
-    Key? key,
+    super.key,
     required this.state,
     required this.scrollController,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -45,12 +45,12 @@ class QuestionsList extends StatelessWidget {
                         ),
                       ),
                       IconButton(
-                        icon: Icon(Icons.copy, color: Colors.white),
+                        icon: const Icon(Icons.copy, color: Colors.white),
                         onPressed: () {
                           final answerText = index == state.questions.length - 1 && state.isLoading ? state.currentAnswer : state.aiAnswers[index];
                           Clipboard.setData(ClipboardData(text: answerText));
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Answer copied to clipboard')),
+                            const SnackBar(content: Text('Answer copied to clipboard')),
                           );
                         },
                       ),

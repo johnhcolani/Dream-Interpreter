@@ -1,4 +1,3 @@
-import 'package:dream_interpret/presentation_layer/screens/home_page.dart';
 import 'package:dream_interpret/presentation_layer/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';

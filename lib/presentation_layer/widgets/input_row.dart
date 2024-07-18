@@ -8,18 +8,18 @@ class InputRow extends StatefulWidget {
   final VoidCallback onStop;
 
   const InputRow({
-    Key? key,
+    super.key,
     required this.controller,
     required this.isLoading,
     required this.onSubmit,
     required this.onStop,
-  }) : super(key: key);
+  });
 
   @override
-  _InputRowState createState() => _InputRowState();
+  InputRowState createState() => InputRowState();
 }
 
-class _InputRowState extends State<InputRow> {
+class InputRowState extends State<InputRow> {
   @override
   void initState() {
     super.initState();
