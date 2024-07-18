@@ -1,0 +1,11 @@
+name: Flutter ci
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repository
+        uses: action/checkout@v2
