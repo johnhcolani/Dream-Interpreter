@@ -15,10 +15,14 @@ jobs:
         with:
           flutter-version: '3.22.2'
 
+      - name: Create .env file
+        run: |
+          echo "API_KEY = ${{ secrets.API_KEY }}" > .env
+
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Build Andoid APK
+      - name: Build Android APK
         run: flutter build apk --release
 
 
