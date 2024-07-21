@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
@@ -22,28 +22,20 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Install CocoaPods
+      - name: Install CocoaPods dependencies
         run: |
-          brew install cocoapods
+          cd ios
           pod install
 
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.0'
+      - name: Build iOS app
+        run: flutter build ios --release --no-codesign
 
-      - name: Install Fastlane
-        run: gem install fastlane
-
-      - name: Set up Fastlane match
-        run: fastlane match appstore --readonly
+      - name: Deploy to App Store
+        run: |
+          cd ios
+          bundle exec fastlane release
         env:
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-
-      - name: Build and Deploy iOS App
-        run: fastlane release
-        env:
-          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-          APP_STORE_CONNECT_PRIVATE_KEY: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
-          APP_STORE_CONNECT_KEY_IDENTIFIER: ${{ secrets.APP_STORE_CONNECT_KEY_IDENTIFIER }}
           APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          APP_STORE_CONNECT_KEY_IDENTIFIER: ${{ secrets.APP_STORE_CONNECT_KEY_IDENTIFIER }}
+          APP_STORE_CONNECT_PRIVATE_KEY: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
