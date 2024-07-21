@@ -1,4 +1,4 @@
-package com.example.dream_interpret
+package com.johncolani.dream_interpretr
 
 import io.flutter.embedding.android.FlutterActivity
 
