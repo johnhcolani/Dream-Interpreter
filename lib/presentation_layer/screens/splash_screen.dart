@@ -7,15 +7,14 @@ class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
   @override
-  SplashScreenState createState() => SplashScreenState();
+  _SplashScreenState createState() => _SplashScreenState();
 }
 
-<<<<<<< HEAD
-class SplashScreenState extends State<SplashScreen> {
-=======
+
+
+
 class _SplashScreenState extends State<SplashScreen> {
   Timer? _timer;
->>>>>>> add-workflow
   @override
   void initState() {
     super.initState();
