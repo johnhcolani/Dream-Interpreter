@@ -11,10 +11,11 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  Timer? _timer;
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 3), () {
+    _timer = Timer(const Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(
         PageRouteBuilder(
           pageBuilder: (context, animation, secondaryAnimation) => const HomePage(),
@@ -36,7 +37,11 @@ class _SplashScreenState extends State<SplashScreen> {
       );
     });
   }
-
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +53,11 @@ class _SplashScreenState extends State<SplashScreen> {
               child: SizedBox(
                   height:double.infinity,
                   width: double.infinity,
-                  child: Image.asset('images/p1.png', fit: BoxFit.fill)),
+                  child: Image.asset('images/p1.png',
+                      fit: BoxFit.fill,
+                  errorBuilder: (context, error,stackTrace)=>
+                    const Center(child:Text('Image loading error')),
+                  )),
             ),
           ),
           Center(
