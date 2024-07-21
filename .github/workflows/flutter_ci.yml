@@ -22,8 +22,11 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
+      - name: Pre-cache Flutter artifacts
+        run: flutter precache --ios
+
       - name: Install Ruby
-        run: sudo apt-get install ruby-full
+        run: sudo apt-get install -y ruby-full
 
       - name: Install CocoaPods
         run: sudo gem install cocoapods
@@ -34,7 +37,7 @@ jobs:
           pod install
 
       - name: Build iOS app
-        run: flutter build ios --release --no-codesign
+        run: flutter build ipa --release --export-method app-store
 
       - name: Deploy to App Store
         run: |
