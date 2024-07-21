@@ -31,7 +31,7 @@ jobs:
         run: gem install fastlane
 
       - name: Build iOS App
-        run: flutter build ios --no-codesign
+        run: flutter build ios
 
       - name: Deploy to App Store
         run: fastlane ios deploy
