@@ -22,6 +22,11 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
+      - name: Install CocoaPods
+        run: |
+          brew install cocoapods
+          pod install
+
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -30,13 +35,15 @@ jobs:
       - name: Install Fastlane
         run: gem install fastlane
 
-      - name: Build iOS App
-        run: flutter build ipa
-
-      - name: Deploy to App Store
-        run: fastlane ios deploy
+      - name: Set up Fastlane match
+        run: fastlane match appstore --readonly
         env:
-          APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
-          APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
-          APP_STORE_CONNECT_API_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_ISSUER_ID }}
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+
+      - name: Build and Deploy iOS App
+        run: fastlane release
+        env:
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          APP_STORE_CONNECT_PRIVATE_KEY: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
+          APP_STORE_CONNECT_KEY_IDENTIFIER: ${{ secrets.APP_STORE_CONNECT_KEY_IDENTIFIER }}
+          APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
