@@ -23,9 +23,9 @@ jobs:
         run: flutter pub get
 
       - name: Set up Ruby
-        uses: actions/setup-ruby@v1
+        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '2.7'
+          ruby-version: '3.0'
 
       - name: Install Fastlane
         run: gem install fastlane
