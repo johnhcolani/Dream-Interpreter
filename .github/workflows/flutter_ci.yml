@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     steps:
       - name: Checkout repository
@@ -31,7 +31,7 @@ jobs:
         run: gem install fastlane
 
       - name: Build iOS App
-        run: flutter build ios
+        run: flutter build ipa
 
       - name: Deploy to App Store
         run: fastlane ios deploy
