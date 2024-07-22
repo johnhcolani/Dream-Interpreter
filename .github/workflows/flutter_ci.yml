@@ -25,6 +25,7 @@ jobs:
       - name: Install Ruby and Fastlane
         run: |
           gem install fastlane -NV
+          gem install cocoapods -NV
 
       - name: Pre-cache Flutter artifacts
         run: flutter precache --ios
@@ -34,7 +35,7 @@ jobs:
           cd ios
           pod install
 
-      - name: Build iOS app with Fastlane
+      - name: Build and release to App Store with Fastlane
         run: |
           cd ios
           fastlane release
