@@ -15,32 +15,30 @@ jobs:
         with:
           flutter-version: '3.22.3'
 
-      - name: Create .env file
-        run: |
-          echo "API_KEY = ${{ secrets.API_KEY }}" > .env
-
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Install Ruby and Fastlane
-        run: |
-          gem install fastlane -NV
-          gem install cocoapods -NV
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.7'
 
-      - name: Pre-cache Flutter artifacts
-        run: flutter precache --ios
+      - name: Install Fastlane
+        run: gem install fastlane
 
-      - name: Install CocoaPods dependencies
-        run: |
-          cd ios
-          pod install
-
-      - name: Build and release to App Store with Fastlane
-        run: |
-          cd ios
-          fastlane release
+      - name: Match AppStore
         env:
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-          APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
-          APP_STORE_CONNECT_KEY_IDENTIFIER: ${{ secrets.APP_STORE_CONNECT_KEY_IDENTIFIER }}
-          APP_STORE_CONNECT_PRIVATE_KEY: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
+        run: fastlane match appstore --git_url https://github.com/johnhcolani/fastlane-match-certificates.git
+
+      - name: Create .env file
+        run: |
+          echo "GOOGLE_API_KEY=${{ secrets.API_KEY }}" > .env
+
+      - name: Build iOS App
+        run: fastlane release
+        env:
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
+          APP_STORE_CONNECT_API_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_IDENTIFIER }}
