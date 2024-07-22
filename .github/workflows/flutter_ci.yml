@@ -37,7 +37,7 @@ jobs:
           pod install
 
       - name: Build iOS app
-        run: flutter build ipa --export-method app-store
+        run: flutter build ios --no-codesign
 
       - name: Deploy to App Store
         run: |
