@@ -20,9 +20,7 @@ platform :ios do
   lane :release do
     increment_build_number(xcodeproj: "Runner.xcodeproj")
     build_app(workspace: "Runner.xcworkspace", scheme: "Runner")
-    upload_to_app_store(
-          username: ENV['APP_STORE_CONNECT_USERNAME'],
-          app_identifier: 'com.4ideas.dream-interpreter'
-        )
+    upload_to_app_store
   end
 end
+
