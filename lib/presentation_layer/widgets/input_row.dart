@@ -44,7 +44,7 @@ class InputRowState extends State<InputRow> {
           child: CustomTextBox(
             textEditingController: widget.controller,
             enabled: !widget.isLoading,
-            label: 'Enter Your Dream',
+            label: 'Explain Your Dream',
           ),
         ),
         const SizedBox(width: 8),
@@ -56,7 +56,7 @@ class InputRowState extends State<InputRow> {
         else
           IconButton(
             onPressed: widget.controller.text.isEmpty ? null : widget.onSubmit,
-            icon: const Icon(Icons.play_arrow, color: Colors.white),
+            icon: const Icon(Icons.arrow_circle_up, color: Colors.white,size: 40,),
           ),
       ],
     );

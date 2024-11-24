@@ -26,19 +26,19 @@ class CustomTextBox extends StatelessWidget {
         ),
         border: const OutlineInputBorder(
           borderSide: BorderSide(width: 1.5, color: Colors.white),
-          borderRadius: BorderRadius.all(Radius.circular(36.0)),
+          borderRadius: BorderRadius.all(Radius.circular(16.0)),
         ),
         enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(width: 1.5, color: Colors.white),
-          borderRadius: BorderRadius.all(Radius.circular(36.0)),
+          borderRadius: BorderRadius.all(Radius.circular(16.0)),
         ),
         focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(width: 1.5, color: Colors.white),
-          borderRadius: BorderRadius.all(Radius.circular(36.0)),
+          borderRadius: BorderRadius.all(Radius.circular(16.0)),
         ),
         disabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(width: 1.5, color: Colors.white),
-          borderRadius: BorderRadius.all(Radius.circular(36.0)),
+          borderRadius: BorderRadius.all(Radius.circular(16.0)),
         ),
       ),
     );
