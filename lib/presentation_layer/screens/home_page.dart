@@ -97,7 +97,7 @@ class _MyHomePageState extends ConsumerState<HomePage> {
           children: [
             const BackgroundImage1(),
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding:  EdgeInsets.only(top: MediaQuery.of(context).size.height *.05),
               child: Column(
                 children: [
                   if (state.needsUpdate)
