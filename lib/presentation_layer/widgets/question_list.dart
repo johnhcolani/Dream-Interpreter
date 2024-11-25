@@ -44,16 +44,7 @@ class QuestionsList extends StatelessWidget {
                           style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.cyan.shade50),
                         ),
                       ),
-                      // IconButton(
-                      //   icon: const Icon(Icons.copy, color: Colors.white),
-                      //   onPressed: () {
-                      //     final answerText = index == state.questions.length - 1 && state.isLoading ? state.currentAnswer : state.aiAnswers[index];
-                      //     Clipboard.setData(ClipboardData(text: answerText));
-                      //     ScaffoldMessenger.of(context).showSnackBar(
-                      //       const SnackBar(content: Text('Answer copied to clipboard')),
-                      //     );
-                      //   },
-                      // ),
+
                     ],
                   ),
                 ),

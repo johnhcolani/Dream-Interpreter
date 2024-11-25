@@ -72,8 +72,8 @@ class _SplashScreenState extends State<SplashScreen> {
               child: SizedBox(
                 width: 250.0,
                 child: DefaultTextStyle(
-                  style: const TextStyle(
-                    color: Colors.black87,
+                  style:  TextStyle(
+                    color: Colors.grey.shade300,
                     fontSize: 30.0,
                     fontFamily: 'Pacifico',
                   ),
