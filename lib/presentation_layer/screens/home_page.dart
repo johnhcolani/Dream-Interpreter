@@ -19,6 +19,17 @@ class _MyHomePageState extends ConsumerState<HomePage> {
   final TextEditingController controller = TextEditingController();
   final ScrollController _scrollController = ScrollController();
   List<Map<String, String>> _savedConversations = [];
+// Prepare your list of prompts
+  final List<String> prompts = [
+    "Why do we dream?",
+    "What does it mean when I dream about falling?",
+    "Can dreams predict the future?",
+    "What does it mean to dream of flying?",
+    "Why do nightmares happen?",
+    "How can I control my dreams?",
+    "Why do I keep dreaming about the same thing?",
+    "What does it mean to dream about water?",
+  ];
 
   @override
   void initState() {
@@ -150,6 +161,8 @@ class _MyHomePageState extends ConsumerState<HomePage> {
                       ),
                     ),
                   const SizedBox(height: 48),
+
+
                   Expanded(
                     child: QuestionsList(
                       state: state,
@@ -162,6 +175,46 @@ class _MyHomePageState extends ConsumerState<HomePage> {
                       child: CircularProgressIndicator(color: Colors.white),
                     ),
                   const SizedBox(height: 16),
+                  // New Horizontal Scrolling ListView
+                  // Hide prompts when the AI starts generating an answer
+                  if (!state.isLoading)
+                    SizedBox(
+                      height: 60,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: prompts.length,
+                        itemBuilder: (context, index) {
+                          return GestureDetector(
+                            onTap: () {
+                              controller.text = prompts[index];
+                            },
+                            child: Container(
+                              margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 10.0,
+                                horizontal: 16.0,
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.blueGrey[400]?.withOpacity(0.6),
+                                borderRadius: BorderRadius.circular(20.0),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  prompts[index],
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+
+                  const SizedBox(height: 16), // Space between prompts and InputRow
+
                   InputRow(
                     controller: controller,
                     isLoading: state.isLoading,
