@@ -140,99 +140,119 @@ class _MyHomePageState extends ConsumerState<HomePage> {
       }
     });
 
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: Stack(
-          children: [
-            const BackgroundImage1(),
-            Padding(
-              padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.05),
-              child: Column(
-                children: [
-                  if (state.needsUpdate)
-                    Container(
-                      padding: const EdgeInsets.all(8.0),
-                      color: Colors.red,
-                      child: const Text(
-                        'Please update the AI model',
-                        style: TextStyle(color: Colors.white),
+    return Stack(
+      children: [
+        GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Scaffold(
+            backgroundColor: Colors.transparent,
+            body: Stack(
+              children: [
+                const BackgroundImage1(),
+                Padding(
+                  padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.05),
+                  child: Column(
+                    children: [
+                      if (state.needsUpdate)
+                        Container(
+                          padding: const EdgeInsets.all(8.0),
+                          color: Colors.red,
+                          child: const Text(
+                            'Please update the AI model',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      const SizedBox(height: 48),
+
+
+                      Expanded(
+                        child: QuestionsList(
+                          state: state,
+                          scrollController: _scrollController,
+                        ),
                       ),
-                    ),
-                  const SizedBox(height: 48),
-
-
-                  Expanded(
-                    child: QuestionsList(
-                      state: state,
-                      scrollController: _scrollController,
-                    ),
-                  ),
-                  if (state.isLoading)
-                    const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 16.0),
-                      child: CircularProgressIndicator(color: Colors.white),
-                    ),
-                  const SizedBox(height: 16),
-                  // New Horizontal Scrolling ListView
-                  // Hide prompts when the AI starts generating an answer
-                  if (!state.isLoading)
-                    SizedBox(
-                      height: 60,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: prompts.length,
-                        itemBuilder: (context, index) {
-                          return GestureDetector(
-                            onTap: () {
-                              controller.text = prompts[index];
-                            },
-                            child: Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 10.0,
-                                horizontal: 16.0,
-                              ),
-                              decoration: BoxDecoration(
-                                color: Colors.blueGrey[400]?.withOpacity(0.6),
-                                borderRadius: BorderRadius.circular(20.0),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  prompts[index],
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
+                      if (state.isLoading)
+                        const Padding(
+                          padding: EdgeInsets.symmetric(vertical: 16.0),
+                          child: CircularProgressIndicator(color: Colors.white),
+                        ),
+                      const SizedBox(height: 16),
+                      // New Horizontal Scrolling ListView
+                      // Hide prompts when the AI starts generating an answer
+                      if (!state.isLoading)
+                        SizedBox(
+                          height: 80, // Increased height to accommodate two lines
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: prompts.length,
+                            itemBuilder: (context, index) {
+                              return GestureDetector(
+                                onTap: () {
+                                  controller.text = prompts[index];
+                                },
+                                child: Container(
+                                  width: 150, // Adjust width to fit prompts
+                                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 10.0,
+                                    horizontal: 12.0,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey.shade200.withOpacity(0.6),
+                                    borderRadius: BorderRadius.circular(20.0),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      prompts[index],
+                                      textAlign: TextAlign.center, // Center-align text
+                                      style:  TextStyle(
+                                        color: Colors.grey.shade800, // Gray text color
+                                        fontWeight: FontWeight.w300, // Weight 300
+                                        fontSize: 14, // Adjust font size if needed
+                                      ),
+                                      softWrap: true, // Allow wrapping
+                                      maxLines: 2, // Limit to 2 lines
+                                      overflow: TextOverflow.ellipsis, // Add ellipsis for overflow
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ),
-                          );
-                        },
+                              );
+                            },
+                          ),
+                        ),
+
+                      const SizedBox(height: 16), // Space between prompts and InputRow
+
+                      InputRow(
+                        controller: controller,
+                        isLoading: state.isLoading,
+                        onSubmit: _handleSubmit,
+                        onStop: _handleStop,
                       ),
-                    ),
-
-                  const SizedBox(height: 16), // Space between prompts and InputRow
-
-                  InputRow(
-                    controller: controller,
-                    isLoading: state.isLoading,
-                    onSubmit: _handleSubmit,
-                    onStop: _handleStop,
+                      const SizedBox(height: 8),
+                      Container(
+                        height: 60, // Adjust height as needed
+                        color: Colors.grey,
+                        alignment: Alignment.center,
+                        child: const Text(
+                          "",
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        ),
+                      ),
+                      SizedBox(height: MediaQuery.of(context).size.height *0.02),
+                    ],
                   ),
-                  const SizedBox(height: 32),
-                ],
-              ),
+                ),
+                CustomAppBar(
+                  onNewPage: _handleClear,
+                  onJournal: _navigateToJournal,
+                  onSave: _handleSave,
+                ),
+              ],
             ),
-            CustomAppBar(
-              onNewPage: _handleClear,
-              onJournal: _navigateToJournal,
-              onSave: _handleSave,
-            ),
-          ],
+          ),
         ),
-      ),
+      ],
     );
   }
 }

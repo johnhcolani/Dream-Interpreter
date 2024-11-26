@@ -23,7 +23,7 @@ class CustomTextBox extends StatelessWidget {
       decoration: InputDecoration(
         label: Text(
           label,
-          style: const TextStyle(color: Colors.white),
+          style:  TextStyle(color: Colors.grey.shade400),
         ),
         border: const OutlineInputBorder(
           borderSide: BorderSide(width: 1.5, color: Colors.white),

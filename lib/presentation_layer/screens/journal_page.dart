@@ -134,7 +134,7 @@ class _JournalPageState extends State<JournalPage> {
                                         .textTheme
                                         .bodySmall
                                         ?.copyWith(
-                                      color: Colors.grey[300],
+                                      color: Colors.grey[200],
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
@@ -160,6 +160,7 @@ class _JournalPageState extends State<JournalPage> {
                                           ? Icons.arrow_drop_up
                                           : Icons.arrow_drop_down,
                                       color: Colors.black,
+                                      size: 40,
                                     ),
                                     onPressed: () {
                                       setState(() {
@@ -170,7 +171,7 @@ class _JournalPageState extends State<JournalPage> {
                                   ),
                                   IconButton(
                                     icon:  Icon(Icons.delete,
-                                        color: Colors.grey.shade300),
+                                        color: Colors.red.shade400),
                                     onPressed: () async {
                                       final id = entry['id'] as int;
                                       await _deleteConversation(id, index);

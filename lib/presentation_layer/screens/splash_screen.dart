@@ -60,7 +60,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   height:double.infinity,
                   width: double.infinity,
                   child: Image.asset('images/p1.png',
-                      fit: BoxFit.fill,
+                      fit: BoxFit.cover,
                   errorBuilder: (context, error,stackTrace)=>
                     const Center(child:Text('Image loading error')),
                   )),
